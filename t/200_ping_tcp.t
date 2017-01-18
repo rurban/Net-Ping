@@ -50,8 +50,7 @@ is($p->ping("172.29.249.249"), 0, "Can't reach 172.29.249.249");
 # Test a few remote servers
 # Hopefully they are up when the tests are run.
 
-foreach (qw(www.geocities.com www.wisc.edu
-	    www.freeservers.com ftp.freeservers.com
+foreach (qw(google.com www.google.com www.wisc.edu
 	    yahoo.com www.yahoo.com www.about.com)) {
     isnt($p->ping($_), 0, "Can ping $_");
 }
