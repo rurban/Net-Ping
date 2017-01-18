@@ -28,7 +28,7 @@ BEGIN {
 #
 # $ PERL_CORE=1 make test
 
-use Test::More tests => 13;
+use Test::More tests => 12;
 BEGIN {use_ok('Net::Ping');}
 
 my $p = new Net::Ping "tcp",9;
