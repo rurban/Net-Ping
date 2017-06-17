@@ -1298,8 +1298,9 @@ sub ping_udp
         $done = 1;
       } else {
         ($from_port, $from_ip) = _unpack_sockaddr_in($from_saddr, $ip->{family});
+        my $addr_in = ref($ip) eq "HASH" ? $ip->{addr_in} : $ip;
         if (!$source_verify ||
-            (($from_ip eq $ip) &&        # Does the packet check out?
+            (($from_ip eq $addr_in) &&        # Does the packet check out?
              ($from_port == $self->{port_num}) &&
              ($from_msg eq $msg)))
         {
