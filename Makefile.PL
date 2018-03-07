@@ -27,12 +27,17 @@ push @extras, LICENSE => 'perl_5'
 push @extras,
   META_MERGE => {
       'meta-spec' => { version => 2 },
+        dynamic_config => 0,
         resources   => {
             # TODO: 26 old issues still open at RT
             # https://rt.cpan.org/Public/Dist/Display.html?Name=Net-Ping
-            bugtracker  => 'https://github.com/rurban/Net-Ping/issues',
-            repository  => 'https://github.com/rurban/Net-Ping',
-            license     => 'http://dev.perl.org/licenses/',
+            bugtracker  => { web => 'https://github.com/rurban/Net-Ping/issues' },
+            repository  => {
+                url => 'https://github.com/rurban/Net-Ping.git',
+                web => 'https://github.com/rurban/Net-Ping',
+                type => 'git',
+            },
+            license    => [ 'http://dev.perl.org/licenses/' ],
         },
         release_status => 'stable',
   }
