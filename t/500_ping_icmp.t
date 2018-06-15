@@ -16,7 +16,7 @@ BEGIN {
   }
 }
 
-my $is_devel = $ENV{PERL_CORE} or -d ".git" ? 1 : 0;
+my $is_devel = $ENV{PERL_CORE} || -d ".git" ? 1 : 0;
 # Note this rawsocket test code is considered anti-social in p5p and was removed in
 # their variant.
 # See http://nntp.perl.org/group/perl.perl5.porters/240707

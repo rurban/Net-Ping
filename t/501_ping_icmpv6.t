@@ -16,7 +16,7 @@ BEGIN {
   }
 }
 
-my $is_devel = $ENV{PERL_CORE} or -d ".git" ? 1 : 0;
+my $is_devel = $ENV{PERL_CORE} || -d ".git" ? 1 : 0;
 if (!Net::Ping::_isroot()) {
     my $file = __FILE__;
     my $lib = $ENV{PERL_CORE} ? '-I../../lib' : '-Mblib';
