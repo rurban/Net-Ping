@@ -124,3 +124,74 @@ sub ping_icmp
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Net::Ping::TimeStamp - check a remote host for reachability
+
+=head1 SYNOPSIS
+
+    use Net::Ping::TimeStamp;
+
+    $p = Net::Ping::TimeStamp->new("icmp");
+    $p->bind($my_addr); # Specify source interface of pings
+    foreach $host (@host_array)
+    {
+        print "$host is ";
+        print "NOT " unless $p->ping($host, 2);
+        print "reachable.\n";
+        sleep(1);
+    }
+    $p->close();
+
+=head1 DESCRIPTION
+
+This module provides a Net::Ping derivated class which makes TimeStamp
+ICMP pings for icmp protocol ping.
+
+For not "icmp" type, this class does exactly what Net::Ping class would do.
+
+If the "icmp" protocol is specified, the ping() method sends an icmp
+timestamp message to the remote host, which is what the UNIX nmap program
+can do while -PP option is used.  If the echoed message is received from
+the remote host and the echoed information is correct, the remote host is
+considered reachable.  Specifying the "icmp" protocol requires that the
+program be run as root or that the program be setuid to root.
+
+=head2 Functions
+
+=over 4
+
+=item $p->ping_icmp([$host, $timeout, $family])
+X<ping_icmp>
+
+The X<ping> method used with the icmp protocol using timestamp message type.
+
+=back
+
+=head1 BUGS
+
+For a list of known issues, visit:
+
+L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Net-Ping>
+and
+L<https://github.com/rurban/Net-Ping/issues>
+
+To report a new bug, visit:
+
+L<https://github.com/rurban/Net-Ping/issues>
+
+=head1 AUTHORS
+
+  Original Net::Ping::TimeStamp author:
+    gbougard  at teclib.com (Guillaume Bougard)
+
+=head1 COPYRIGHT
+
+Copyright (c) 2018, Guillaume Bougard.  All rights reserved.
+
+This program is free software; you may redistribute it and/or
+modify it under the same terms as Perl itself.
+
+=cut
