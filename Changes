@@ -2,6 +2,12 @@ CHANGES
 -------
 
 
+2.68  Wed Jun 27 11:55:06 CEST 2018 (rurban)
+       Bugfixes
+       - Fixed _resolv return value on failing DNS name lookup. (GH #12 nlv02636)
+       - Fixed installation dir from CPAN. Install into site, not perl there.
+         (GH #12 nlv02636)
+
 2.67  Mon Jun 25 18:10:42 CEST 2018 (rurban)
        Bugfixes
        - Fixed non-core icmp ping test. PR #10 Guillaume Bougard

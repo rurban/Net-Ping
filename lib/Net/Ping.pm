@@ -21,9 +21,7 @@ use Time::HiRes;
 @ISA = qw(Exporter);
 @EXPORT = qw(pingecho);
 @EXPORT_OK = qw(wakeonlan);
-# perl5 has a bogus version 2.62, where they claim they are still maintaining it,
-# and broke v5.6.
-$VERSION = "2.67";
+$VERSION = "2.68";
 
 # Globals
 
@@ -1855,6 +1853,7 @@ sub _resolv {
   # Clean up port
   if (defined($h{port}) && (($h{port} !~ /^\d{1,5}$/) || ($h{port} < 1) || ($h{port} > 65535))) {
     croak("Invalid port `$h{port}' in `$name'");
+    return undef;
   }
 # END - host:port
 
@@ -1911,18 +1910,21 @@ sub _resolv {
         } else {
           (undef, $h{addr_in}, undef, undef) = Socket::unpack_sockaddr_in6 $getaddr[0]->{addr};
         }
-        return \%h
+        return \%h;
       } else {
         carp("getnameinfo($getaddr[0]->{addr}) failed - $err");
+        return undef;
       }
     } else {
       warn(sprintf("getaddrinfo($h{host},,%s) failed - $err",
                     $family == AF_INET ? "AF_INET" : "AF_INET6"));
+      return undef;
     }
   # old way
   } else {
     if ($family == $AF_INET6) {
       croak("Socket >= 1.94 required for IPv6 - found Socket $Socket::VERSION");
+      return undef;
     }
 
     my @gethost = gethostbyname($h{host});
@@ -1933,8 +1935,10 @@ sub _resolv {
       return \%h
     } else {
       carp("gethostbyname($h{host}) failed - $^E");
+      return undef;
     }
   }
+  return undef;
 }
 
 sub _pack_sockaddr_in($$) {
