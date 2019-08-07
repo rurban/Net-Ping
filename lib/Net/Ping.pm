@@ -145,7 +145,7 @@ sub new
 
   if ($self->{'host'}) {
     my $host = $self->{'host'};
-    my $ip = _resolv($host) or
+    my $ip = $self->_resolv($host) or
       carp("could not resolve host $host");
     $self->{host} = $ip;
     $self->{family} = $ip->{family};
@@ -153,7 +153,7 @@ sub new
 
   if ($self->{bind}) {
     my $addr = $self->{bind};
-    my $ip = _resolv($addr)
+    my $ip = $self->_resolv($addr)
       or carp("could not resolve local addr $addr");
     $self->{local_addr} = $ip;
   } else {
@@ -247,7 +247,7 @@ sub new
     $self->_setopts();
     if ($self->{'gateway'}) {
       my $g = $self->{gateway};
-      my $ip = _resolv($g)
+      my $ip = $self->_resolv($g)
         or croak("nonexistent gateway $g");
       $self->{family} eq $AF_INET6
         or croak("gateway requires the AF_INET6 family");
