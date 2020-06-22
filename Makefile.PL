@@ -31,8 +31,12 @@ push @extras,
             # TODO: 26 old issues still open at RT
             # https://rt.cpan.org/Public/Dist/Display.html?Name=Net-Ping
             bugtracker  => 'https://github.com/rurban/Net-Ping/issues',
-            repository  => 'https://github.com/rurban/Net-Ping',
-            license     => 'http://dev.perl.org/licenses/',
+            repository  => {
+                type => 'git',
+                url => 'https://github.com/rurban/Net-Ping.git',
+                web => 'https://github.com/rurban/Net-Ping',
+            },
+            license     => [ 'http://dev.perl.org/licenses/' ],
         },
         #release_status => 'stable',
   }
