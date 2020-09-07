@@ -46,7 +46,7 @@ my $NIx_NOSERV = eval { Socket::NIx_NOSERV() } || 2;
 #my $IPV6_HOPLIMIT  = eval { Socket::IPV6_HOPLIMIT() };  # ping6 -h 0-255
 my $qr_family = qr/^(?:(?:(:?ip)?v?(?:4|6))|${\AF_INET}|$AF_INET6)$/;
 my $qr_family4 = qr/^(?:(?:(:?ip)?v?4)|${\AF_INET})$/;
-my $Socket_VERSION = eval { $Socket::VERSION };
+my $Socket_VERSION = eval $Socket::VERSION;
 
 if ($^O =~ /Win32/i) {
   # Hack to avoid this Win32 spewage:
