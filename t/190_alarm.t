@@ -29,7 +29,7 @@ use Test::More tests => 6;
 BEGIN {use_ok 'Net::Ping'};
 
 # Hopefully this is never a routeable host
-my $fail_ip = $ENV{NET_PING_FAIL_IP} || "172.29.249.249";
+my $fail_ip = $ENV{NET_PING_FAIL_IP} || "192.0.2.0";
 
 eval {
   my $timeout = 11;

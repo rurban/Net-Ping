@@ -59,7 +59,7 @@ SKIP: {
   my $rightip = "2001:4860:4860::8888"; # pingable ip of google's dnsserver
   # for a firewalled ipv6 network try an optional local ipv6 host
   $rightip = $ENV{TEST_PING6_HOST} if $ENV{TEST_PING6_HOST};
-  my $wrongip = "2001:4860:4860::1234"; # non existing ip
+  my $wrongip = "2001:db8::"; # non existing ip
   # diag "Pinging existing IPv6 ";
   my $result = $p->ping($rightip);
   if ($result == 1) {

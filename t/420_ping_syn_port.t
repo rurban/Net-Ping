@@ -34,7 +34,7 @@ BEGIN {
 # $ PERL_CORE=1 make test
 
 # Hopefully this is never a routeable host
-my $fail_ip = $ENV{NET_PING_FAIL_IP} || "172.29.249.249";
+my $fail_ip = $ENV{NET_PING_FAIL_IP} || "192.0.2.0";
 
 # Try a few remote servers
 my %webs;

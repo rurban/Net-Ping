@@ -37,7 +37,7 @@ BEGIN {
 my %webs;
 BEGIN {
   # Hopefully this is never a routeable host
-  my $fail_ip = $ENV{NET_PING_FAIL_IP} || "172.29.249.249";
+  my $fail_ip = $ENV{NET_PING_FAIL_IP} || "192.0.2.0";
 
   %webs = (
   $fail_ip => 0,
