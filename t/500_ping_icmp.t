@@ -19,6 +19,7 @@ BEGIN {
 }
 
 my $is_devel = $ENV{PERL_CORE} || -d ".git" ? 1 : 0;
+$ENV{TEST_PING_HOST} = "127.0.0.1" if $ENV{NO_NETWORK_TESTING};
 # Note this rawsocket test code is considered anti-social in p5p and was removed in
 # their variant.
 # See http://nntp.perl.org/group/perl.perl5.porters/240707
