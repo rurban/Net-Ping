@@ -1081,8 +1081,7 @@ sub tcp_connect
 
 sub DESTROY {
   my $self = shift;
-  if ($self->{'proto'} eq 'tcp' &&
-      $self->{'tcp_chld'}) {
+  if ($self->{'proto'} && ($self->{'proto'} eq 'tcp') && $self->{'tcp_chld'}) {
     # Put that choking client out of its misery
     kill "KILL", $self->{'tcp_chld'};
     # Clean off the zombie
