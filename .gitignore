@@ -3,6 +3,7 @@ lib/.DS_Store
 Makefile.old
 MYMETA.json
 MYMETA.yml
+META.yml
 Makefile
 blib/
 pm_to_blib
