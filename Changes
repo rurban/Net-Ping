@@ -1,5 +1,9 @@
 CHANGES
 -------
+2.76  2024-12-05 13:12:08 rurban
+      Features
+      - use SOCK_DRGAM for ICMP under linux, which requires no root.
+        (Owen DeLong GH #33)
 2.75  2022-09-01 12:44:03 rurban
       Minor
       - Modernized the synopsis (PR #31)
