@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1.3
+        uses: perl-actions/install-with-cpm@8b1a9840b26cc3885ae2889749a48629be2501b0 # v1.9
         with:
           install: |
             Socket
@@ -77,13 +77,13 @@ jobs:
           ]
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: shogo82148/actions-setup-perl@v1
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+      - uses: shogo82148/actions-setup-perl@f9f0bf89e0d19ddbabb2f40d43db2e944bce7d2f # v1.36.0
         with:
           perl-version: ${{ matrix.perl-version }}
       - run: perl -V
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@v1.3
+        uses: perl-actions/install-with-cpm@8b1a9840b26cc3885ae2889749a48629be2501b0 # v1.9
         with:
           sudo: false
           install: |
@@ -109,7 +109,7 @@ jobs:
         perl-version: [latest]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - run: perl -V
       - run: perl Makefile.PL
       - run: make test
