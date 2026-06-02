@@ -82,14 +82,10 @@ jobs:
         with:
           perl-version: ${{ matrix.perl-version }}
       - run: perl -V
+      - name: install cpanm
+        run: curl -sL https://cpanmin.us | perl - App::cpanminus
       - name: install cpan deps
-        uses: perl-actions/install-with-cpm@8b1a9840b26cc3885ae2889749a48629be2501b0 # v1.9
-        with:
-          sudo: false
-          install: |
-            Socket
-            Test::More
-            Time::HiRes
+        run: cpanm --notest Socket Test::More Time::HiRes
       - run: perl Makefile.PL
       - run: make test
 
